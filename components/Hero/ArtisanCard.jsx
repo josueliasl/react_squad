@@ -1,7 +1,6 @@
 // ArtisanCard.jsx for Next.js
 import React from 'react';
-import Image from 'next/image'; // 👈 Import Next.js Image
-
+import Image from 'next/image';
 const ArtisanCard = ({ name, title, rating, reviews, img, className = "" }) => {
     const renderStars = (rating) => {
         return Array.from({ length: 5 }).map((_, i) => (
@@ -19,7 +18,7 @@ const ArtisanCard = ({ name, title, rating, reviews, img, className = "" }) => {
                 <Image
                     src={img}
                     alt={name}
-                    fill // Makes it fill the 14x14 wrapper
+                    fill 
                     className="rounded-full object-cover border-2 border-white/20"
                 />
             </div>

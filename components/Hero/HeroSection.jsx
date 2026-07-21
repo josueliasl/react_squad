@@ -1,6 +1,6 @@
 // HeroSection.jsx for Next.js
 import React from 'react';
-import Image from 'next/image'; // 👈 Import Next.js Image component
+import Image from 'next/image';
 import ArtisanCard from './ArtisanCard';
 import StatItem from './StatItem';
 
