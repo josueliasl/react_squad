@@ -3,6 +3,8 @@ import React from 'react';
 import Image from 'next/image';
 import ArtisanCard from './ArtisanCard';
 import StatItem from './StatItem';
+import ProductCard from './productCard';
+
 
 const HeroSection = () => {
   return (
@@ -84,9 +86,44 @@ const HeroSection = () => {
           />
         </div>
 
+        <div className="lg:col-span-full w-full bg-terracotta-light/30 backdrop-blur-sm border border-terracotta-light/30 p-6 rounded-2xl shadow-lg mt-10 lg:mt-0">
+          <h1 className="text-2xl font-bold text-white mb-6 lg:col-span-full">Featured Products</h1>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <ProductCard 
+              name="Alpaca Scarf" 
+              title="Well nited and warm" 
+              price="$120" 
+              img="/images/alpaca_scarf_main.png" 
+            />
+            <ProductCard 
+              name="Decorative Pillow" 
+              title="Hand nited with care" 
+              price="$85" 
+              img="/images/pillowcase_main.png" 
+            />
+            <ProductCard 
+              name="Lavender Candle" 
+              title="Like being in a lavender field" 
+              price="$25" 
+              img="/images/lavender_candle_main.png" 
+            />
+            <ProductCard 
+              name="Coconut Candle" 
+              title="Hand poured with love" 
+              price="$15" 
+              img="/images/candle_coconut_main.png" 
+            />
+          </div>
+        </div>
+
+
       </div>
+
     </div>
+      
   );
+  
 };
 
 export default HeroSection;
