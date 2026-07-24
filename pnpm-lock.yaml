@@ -8,15 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@clerk/nextjs':
+        specifier: ^7.5.22
+        version: 7.5.22(next@16.2.10(@babel/core@7.29.7(supports-color@7.2.0))(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
       lucide-react:
         specifier: ^1.26.0
         version: 1.26.0(react@19.2.4)
-      '@clerk/nextjs':
-        specifier: ^7.5.22
-        version: 7.5.22(next@16.2.10(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       next:
         specifier: 16.2.10
         version: 16.2.10(@babel/core@7.29.7(supports-color@7.2.0))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -2241,12 +2241,12 @@ snapshots:
       - react
       - react-dom
 
-  '@clerk/nextjs@7.5.22(next@16.2.10(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@clerk/nextjs@7.5.22(next@16.2.10(@babel/core@7.29.7(supports-color@7.2.0))(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       '@clerk/backend': 3.12.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@clerk/react': 6.12.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@clerk/shared': 4.25.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      next: 16.2.10(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      next: 16.2.10(@babel/core@7.29.7(supports-color@7.2.0))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
       server-only: 0.0.1
