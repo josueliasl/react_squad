@@ -3,14 +3,19 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { NavLinks } from './Nav-links';
-import { User, ShoppingCart } from 'lucide-react';
-import { useAuth, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
+import { User, ShoppingCart, Store, LayoutDashboard } from 'lucide-react';
+import { useUser, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
 
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { isLoaded, isSignedIn } = useAuth();
+  const { isLoaded, isSignedIn, user } = useUser();
 
-  // Show a minimal navbar while Clerk is loading
+  // Verificar si el usuario tiene el rol de vendedor en la metadata
+  const isSeller = user?.publicMetadata?.isSeller === 'seller';
+  // Nota: Si usas un booleano en metadata como { isSeller: true }, usarías:
+  // const isSeller = user?.publicMetadata?.isSeller === true;
+
+  // Render minimal navbar while Clerk is loading
   if (!isLoaded) {
     return (
       <header className="bg-white shadow relative z-50">
@@ -81,6 +86,25 @@ export function NavBar() {
                 </>
               ) : (
                 <div className="flex items-center gap-6">
+                  {/* Botón dinámico según el rol del usuario */}
+                  {isSeller ? (
+                    <Link
+                      href="/seller/dashboard"
+                      className="flex items-center gap-2 text-sm font-medium text-[#c95f3b] hover:text-[#5a3de0] transition-colors"
+                    >
+                      <LayoutDashboard className="w-5 h-5" />
+                      <span>Manage business</span>
+                    </Link>
+                  ) : (
+                    <Link
+                      href="/seller/become-seller"
+                      className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-[#c95f3b] transition-colors"
+                    >
+                      <Store className="w-5 h-5" />
+                      <span>Start selling</span>
+                    </Link>
+                  )}
+
                   <Link 
                     href="/cart" 
                     className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-black transition-colors"
@@ -88,7 +112,8 @@ export function NavBar() {
                     <ShoppingCart className="w-5 h-5" />
                     <span>Carrito</span>
                   </Link>
-                  <UserButton/>
+
+                  <UserButton />
                 </div>
               )}
             </div>
@@ -145,6 +170,27 @@ export function NavBar() {
               </>
             ) : (
               <>
+                {/* Botón dinámico Mobile */}
+                {isSeller ? (
+                  <Link
+                    href="/seller/dashboard"
+                    className="flex items-center gap-3 text-sm font-medium text-[#c95f3b] hover:text-[#5a3de0] px-4 py-3 rounded-md hover:bg-gray-50"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <LayoutDashboard className="w-5 h-5" />
+                    Manage business
+                  </Link>
+                ) : (
+                  <Link
+                    href="/seller/become-seller"
+                    className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-[#c95f3b] px-4 py-3 rounded-md hover:bg-gray-50"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Store className="w-5 h-5" />
+                    Start selling
+                  </Link>
+                )}
+
                 <Link 
                   href="/cart" 
                   className="flex items-center gap-3 text-sm font-medium text-gray-500 hover:text-black px-4 py-3 rounded-md hover:bg-gray-50"
@@ -153,8 +199,9 @@ export function NavBar() {
                   <ShoppingCart className="w-5 h-5" />
                   Carrito
                 </Link>
+                
                 <div className="px-4 py-2">
-                  <UserButton/>
+                  <UserButton />
                 </div>
               </>
             )}
